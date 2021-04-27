@@ -1,0 +1,21 @@
+body{
+    background-color: #ffebcd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav{
+    background-color: blueviolet;
+}
+ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    padding: 2%;
+}
+li:hover{
+    background-color: chocolate;
+    color:cornsilk;
+}
