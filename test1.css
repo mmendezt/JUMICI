@@ -1,0 +1,15 @@
+body{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: aquamarine;
+}
+#canvas{
+    display: flex;
+    width: 110vw;
+    height: 10vh;
+    background-color: brown;
+
+}
