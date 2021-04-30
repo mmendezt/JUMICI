@@ -1,0 +1,9 @@
+* {
+    border:solid 1px greenyellow;
+    background-image: url(./images/characters/test.png);
+    background-repeat: repeat;
+}
+body{
+    background-image: url(./images/characters/test.png);
+    background-repeat: repeat;
+}
