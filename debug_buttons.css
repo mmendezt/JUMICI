@@ -1,0 +1,7 @@
+#debug_buttons{
+    height: 5vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    background-color: transparent;
+}

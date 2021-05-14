@@ -21,12 +21,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    transition: right 1s;
+    transition: right 1s, opacity 0.75s;
     position: relative;
     right: 0;
 }
-.out#left{right: 48vw;}
-.out#right{right: -48vw;}
+.out#left{right: 48vw; opacity: 0;}
+.out#right{right: -48vw; opacity: 0;}
 .center#left{right: -24vw;}
 .center#right{right: 24vw;}
 
@@ -39,7 +39,7 @@ body{
     grid-row: 1;
 }
 #center{
-    grid-column: 3/span1;
+    grid-column: 3/span 1;
     grid-row: 1;
     position: relative;
     right: 22vw;
