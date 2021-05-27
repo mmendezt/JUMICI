@@ -1,4 +1,5 @@
 body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +15,7 @@ body{
     grid-template-rows: 50vh 50vh;
     width: 100%;
     height: 100%;
-    background-color: brown;
+    background-color: rgb(60,60,60);
 }
 /* Character characteristics and position for animations*/
 .character{
@@ -58,20 +59,34 @@ body{
 
 .background{grid-column: 1/13; grid-row: 1/span 1; background-color: aquamarine;}
 .dialog{
-    grid-column: 1/13;
+    color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    grid-column: 1/6;
     grid-row: 2;
-    background-color: rgb(50, 77, 85);
-    margin: 4vw;
-    padding: 4vw;
+    background-color: rgb(20, 20, 20);
+    margin: 1vmax;
+    padding: 1vmax;
+}
+#title{
+    border-bottom: 1px solid cyan;
+
 }
 
 /* Portrait and Landscape changes */
 @media (orientation: landscape) {
+    div{
+        font-size: calc(14px + 1vw);
+    }
     #canvas{
         grid-template-rows: 55vh 45vh;
     }
 }
 @media (orientation: Portrait) {
+    div{
+        font-size: calc(14px + 1vw);
+    }
     #canvas{
         grid-template-rows: 30vh 70vh;
     }

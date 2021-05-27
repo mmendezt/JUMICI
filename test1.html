@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="debug.css"> -->
     <link rel="stylesheet" href="debug_buttons.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="test1controller.js"></script>
     <title>Test number 1</title>
 </head>
@@ -27,14 +28,22 @@
 
         </div>
 
-        <div class="dialog">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, est? Pariatur perspiciatis eaque corporis? Laboriosam, est quaerat. Vitae iusto accusamus, in minus sint aspernatur perferendis? Officiis mollitia sapiente explicabo nam?
-
+        <div class="dialog">
+            <div id="title"><span id="name"></span> says:</div>
+            <div id="message"></div>
         </div>
+
+
+
         <div id="debug_buttons">
-            <button onclick="toggleOut('left')">Toogle Left In/Out</button>
-            <button onclick="toggleOut('right')">Toogle Right In/Out</button>
-            <button onclick="toggleCenter('left')">Toogle Left center</button>
-            <button onclick="toggleCenter('right')">Toogle Right center</button>
+            <div style="display: flex;flex-direction: row;">
+                <button onclick="toggleOut('left')">Toogle Left In/Out</button>
+                <button onclick="toggleOut('right')">Toogle Right In/Out</button>
+            </div>
+            <div style="display: flex;flex-direction: row;">
+                <button onclick="toggleCenter('left')">Toogle Left center</button>
+                <button onclick="toggleCenter('right')">Toogle Right center</button>
+            </div>
         </div>
     </div>
 
