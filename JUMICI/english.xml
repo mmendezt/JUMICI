@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene name="One">
+    <dialog index = 0 speaker="Peter">
+        Hey! IT guy wait!. My <strong style='color: Red;'>internet <i>connection</i> </strong> has failed, SOLVE IT!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum, recusandae impedit deserunt tempore laborum voluptate? Incidunt, corrupti perspiciatis? Vel, cupiditate exercitationem. Repellat necessitatibus neque facere ipsa eius molestias quisquam quidem!Lorem Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, provident, nemo neque excepturi sequi consectetur sit officiis dolorum incidunt vero ut autem quam odit cupiditate. Beatae, facilis tenetur! Maxime, officia!
+    </dialog>
+    <dialog index = 1 speaker="Karen">
+        Yooooo my <strong style='color: Red;'>internet <i>connection</i> </strong> is not working too, you better hurry with that fix.
+    </dialog>
+</scene>
