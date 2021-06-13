@@ -42,9 +42,9 @@ body{
 #center{
     grid-column: 3/span 1;
     grid-row: 1;
-    position: relative;
-    right: 22vw;
+    /* right: 22vw; */
 }
+/*Image related characteristics*/
 .character img{
     width: auto;
     height: auto;
@@ -86,14 +86,14 @@ body{
         font-size: calc(14px + 1vw);
     }
     #canvas{
-        grid-template-rows: 55vh 45vh;
+        grid-template-rows: 55% 45%;
     }
 }
 @media (orientation: Portrait) {
     div{
-        font-size: calc(14px + 1vh * 1vw);
+        font-size: calc(14px + 1vw);
     }
     #canvas{
-        grid-template-rows: 30vh 70vh;
+        grid-template-rows: 30% 70%;
     }
 }

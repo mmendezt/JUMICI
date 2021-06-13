@@ -1,0 +1,24 @@
+{
+    "sceneArray": [
+        {
+            "dialog": [
+                {
+                    "speaker": "Peter",
+                    "message": "Hey i need you to fix my internet connection"
+                },
+                {
+                    "speaker": "Karen",
+                    "message": "Yeah, same"
+                }
+            ]
+        },
+        {
+            "dialog": [
+                {
+                    "speaker": "Gary",
+                    "dialog": "Yoooooooo internet is down again fix it please"
+                }
+            ]
+        }
+    ]
+}

@@ -1,34 +1,29 @@
 const toggleOut = (position) => {
-    if ( document.getElementById(position).classList.contains('out') )
-        document.getElementById(position).classList.remove('out');
-    else
-        document.getElementById(position).classList.add('out');
+    let character = document.getElementById(position);
+    character.classList.toggle('out');
     //If the character was centered remove that class, since it is no longer at the center
-    if(document.getElementById(position).classList.contains('center'))
-        document.getElementById(position).classList.remove('center');
+    if(character.classList.contains('center'))
+        character.classList.remove('center');
 
-    return new Promise(resolve => setTimeout(resolve,1300));
+    return new Promise(resolve => setTimeout(function(){character.style.transition="none";resolve();} ,1300));
 };
 
 const toggleCenter = (position) => {
-    if ( document.getElementById(position).classList.contains('center') )
-        document.getElementById(position).classList.toggle('center');
-    else
-        document.getElementById(position).classList.add('center');
+    let character = document.getElementById(position);
+    character.classList.toggle('center');
     //If the character was out remove that class, since it is no longer out of the scene 
-    if(document.getElementById(position).classList.contains('out'))
-        document.getElementById(position).classList.remove('out');
+    if(character.classList.contains('out'))
+        character.classList.remove('out');
 
-    return new Promise(resolve => setTimeout(resolve,1300));
+    return new Promise(resolve => setTimeout(function(){character.style.transition="none";resolve();},1300));
 };
 
 //Speak Functions
-const speak = async (args) => {
-
+const showMessage = async (args) => {
     $('#message').html('<span id="visibleMessage"></span><span id="blankedMessage"></span>');
     let currentOffset = 0;
     let markUpArray = [];
-    let currentDialog = json.sceneArray[args[0]].dialog[args[1]];
+    let currentDialog = language.sceneArray[args[0]].dialog[args[1]];
     let fullText = currentDialog.message;
     $("#title").html(currentDialog.speaker+' says:');
     $(".dialog").click(function(){ completeSpeak(fullText);});
@@ -81,37 +76,40 @@ const displayNextCharacter = (currentOffset,fullText,markUpArray) =>{
 const completeSpeak = (fullText) => {
 $("#message").html(fullText);
 }
+
 var actions;
 function initializeActions(){
-    actions = new Map();
-    
+    actions = new Map();    
     actions.set(toggleOut.name,toggleOut);
     actions.set(toggleCenter.name, toggleCenter);
-    actions.set(speak.name, speak);
+    actions.set(showMessage.name, showMessage);
 
 }
 
 
-var json;
-$($.getJSON('d.json',function (data){json=data;}));
-
+var language;
 $(main);
-var sceneOne;
+
 async function main(){
+    while(language==undefined){
+        console.log('waiting for language to load');
+        await new Promise(resolve => setTimeout(resolve,300));
+    }
     initializeActions();
     //sceneOne = new Scene(window.prompt("Input Scene name"));
+    var sceneOne;
     sceneOne = new Scene('One');
     sceneOne.setActions(actions);
     sceneOne.setNextStep(toggleCenter.name,"left");
-    sceneOne.setNextStep(speak.name,[0,0]);   
+    sceneOne.setNextStep(showMessage.name,[0,0]);   
     sceneOne.setNextStep(toggleCenter.name,"left");
     sceneOne.setNextStep(toggleOut.name,"right");
-    sceneOne.setNextStep(speak.name,[0,1]);
+    sceneOne.setNextStep(showMessage.name,[0,1]);
     sceneOne.setNextStep(toggleOut.name,"left");
     sceneOne.setNextStep(toggleOut.name,"right");
 
     sceneOne.run();
-    //download(JSON.stringify(actions),sceneOne.name + '.json', 'text/plain');
+    // download(JSON.stringify(sceneOne),sceneOne.name + '.json', 'text/plain');
     // let dialogEnglish=new Object;
     // dialogEnglish.sceneArray = new Array();
 
@@ -132,14 +130,6 @@ async function main(){
     // download(JSON.stringify(dialogEnglish),sceneOne.name + '.json', 'text/plain');
 }
 
-function getDialog(XML,sceneName,dialogIndex){
-    let scene=$(XML).find('scene').each(function (){if(this.attr('name')==sceneName){return this;}});
-    return $(scene).find('dialog').each(function (){if(this.attr('index')==dialogIndex){return this}});
-}
-
-const changeHTMLbyID = (id,content) =>{
-    $(id).html(content);
-};
 
 
 function download(content, fileName, contentType) {
