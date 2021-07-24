@@ -3,7 +3,7 @@ var language;
 $(main);
 
 async function main(){
-    $.getJSON('/languages/english.json',function (data){language=data;});
+    $.getJSON('/JUMICI/languages/english.json',function (data){language=data;});
     while(language==undefined){
         console.log('waiting for language to load');
         await new Promise(resolve => setTimeout(resolve,300));
