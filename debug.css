@@ -1,0 +1,10 @@
+* {
+    border:solid 1px greenyellow;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+body{
+    background-image: url(./images/characters/test.png);
+    background-repeat: repeat;
+}
+

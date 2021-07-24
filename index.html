@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Menu Horizontal</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- <link rel="stylesheet" href="debug.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scene_class.js"></script>
+    <script src="actions.js"></script>
+    <script src="main_controller.js"></script>
+    <script src="dev_scene_creation_buttons.js"></script>
+    <script src="dev_debug_buttons.js"></script>
+    <title>JUMICI</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li> <a href="./JUMICI">JUMICI</a> </li>
-            <li><a href="./ejerciciomod3">Ejercicio 3</a></li>
-            <li>Option 3</li>
-            <li>Option 4</li>
-            <li>Option 5</li>
-        </ul>
+    <div id="canvas">
+        <div class="background" state><img src="./images/backgrounds/office1.jpg" alt="Oficina"></div>
 
-    </nav>
+        <div class="character out" id="left">
+            <img src="./images/characters/char1.png" alt="character_left">
+        </div>
+
+        <div class="character out" id="right">
+            <img src="./images/characters/char2.png" alt="character_right">
+        </div>
+
+        <div class="dialog">
+            <div id="title"></div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+
 </body>
 </html>
