@@ -22,7 +22,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    transition: right 1s, opacity 0.75s;
+    transition: right 1s,opacity 0.75s;
     position: relative;
     right: 0;
 }
@@ -42,7 +42,6 @@ body{
 #center{
     grid-column: 3/span 1;
     grid-row: 1;
-    /* right: 22vw; */
 }
 /*Image related characteristics*/
 .character img{
