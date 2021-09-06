@@ -7,25 +7,35 @@ async function main(){
 
     $.getJSON('languages/english.json',function (data){language=data;});
     while(language==undefined){
-        console.log('waiting for language to load');
+        console.log('Waiting for language to load');
         await new Promise(resolve => setTimeout(resolve,300));
     }
 
-    initializeActions();
-    var scene = undefined;
-    var loadedScene = undefined;
-    // sceneOne = new Scene(window.prompt("Input Scene name"));
+    var urlSearchParams = new URLSearchParams(window.location.search);
+    if(urlSearchParams.has('scene')){
+        var sceneName = urlSearchParams.get('scene');
+        var scene = undefined;
+        var sceneData = undefined;        
+        
+        $.getJSON('scenes/'+sceneName+'.json',function (data){sceneData=data;});
+        while(sceneData==undefined){
+            console.log('Waiting for scene to load');
+            await new Promise(resolve => setTimeout(resolve,300));
+        }
 
-    // var sceneOne= new Scene('example1');
-    $.getJSON('scenes/example1.json',function (data){loadedScene=data;});
-    while(loadedScene==undefined){
-        console.log('waiting for scene to load');
-        await new Promise(resolve => setTimeout(resolve,300));
+        initializeActions();
+        scene = new Scene(sceneData);
+        scene.setActions(actions);
+        scene.run();
+        console.log('Everyting loaded correctly');
+    }
+    else{
+        console.log('No scene name parameter on URL')
     }
 
-    scene = new Scene(loadedScene);
 
-    console.log('everyting loaded');
+
+
     // sceneOne.setActions(actions);
     // sceneOne.setNextStep(activateDialogView.name,'office1.jpg')
     // sceneOne.setNextStep(loadCharacter.name,['left', 'char1.png'])
@@ -57,8 +67,7 @@ async function main(){
     // sceneOne.setNextStep(getTestAnswer.name,"");
     // sceneOne.setNextStep(deactivateTestView.name,"");
 
-    scene.setActions(actions);
-    scene.run();
+
 
     // download(JSON.stringify(sceneOne),sceneOne.name + '.json', 'text/plain');
 }
