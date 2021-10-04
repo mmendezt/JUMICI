@@ -1,8 +1,11 @@
 {
     "name": "One",
-    "currentStep": 1,
-    "length": 7,
+    "currentStep": 0,
+    "length": 10,
     "actionKeys": [
+        "activateDialogView",
+        "loadCharacter",
+        "loadCharacter",
         "toggleCenter",
         "showMessage",
         "toggleCenter",
@@ -12,6 +15,15 @@
         "toggleOut"
     ],
     "actionArguments": [
+        "office1.jpg",
+        [
+            "left",
+            "char1.png"
+        ],
+        [
+            "right",
+            "char2.png"
+        ],
         "left",
         [
             0,

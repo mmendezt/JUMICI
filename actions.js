@@ -1,4 +1,5 @@
-//Toggles the character with id "position" in and out of the scene, if position=='both' both characters are toggle
+/*ACTION*/
+//Toggles the character with id "position" in and out of the scene, if position=='both' both characters are toggled
 const toggleOut = (position) => {
     if(position=='both'){
         let character = document.getElementById('left');
@@ -23,6 +24,7 @@ const toggleOut = (position) => {
     return new Promise(resolve => setTimeout(function () { resolve(); }, 1300));
 };
 
+/*ACTION*/
 //Toggles center position for the character  with id "position"
 const toggleCenter = (position) => {
     let character = document.getElementById(position);
@@ -34,7 +36,8 @@ const toggleCenter = (position) => {
     return new Promise(resolve => setTimeout(function () { resolve(); }, 1300));
 };
 
-//Loads character image with name args[1] to position args[0]
+/*ACTION*/
+//Loads the image with name args[1] to the character in position args[0]
 const loadCharacter = (args) => {
     let characterImagesPath = "./images/characters/";
     let position = args[0];
@@ -43,6 +46,7 @@ const loadCharacter = (args) => {
     return new Promise(resolve => resolve());
 };
 
+/*ACTION*/
 //Loads the background image with name "imageName" and shows the dialog div
 const activateDialogView = (imageName) => {
     let backgroundImagesPath = "./images/backgrounds/";
@@ -52,6 +56,7 @@ const activateDialogView = (imageName) => {
     return new Promise(resolve => setTimeout(function () { resolve(); }, 1000));
 };
 
+/*ACTION*/
 //Changes the background image with the one named "imageName"
 const changeBackground = (imageName) => {
     let backgroundImagesPath = "./images/backgrounds/";    
@@ -64,6 +69,7 @@ const changeBackground = (imageName) => {
      }, 1000));
 };
 
+/*ACTION*/
 //Unloads background image and hides the dialog div
 const deactivateDialogView = () => {
     $('#background').css('opacity', '0');
@@ -75,9 +81,13 @@ const deactivateDialogView = () => {
          resolve(); 
         }, 1000));
 };
+
+/*ACTION*/
 //Loads test args[1] info from scene args[0] and shows the test div
 const activateTestView = (args) => {
-    let currentTest = language.sceneArray[args[0]].test[args[1]];    
+    let sceneNumber = args[0];
+    let testNumber = args[1];
+    let currentTest = language.sceneArray[sceneNumber].test[testNumber];    
     $('#question').html(currentTest.question);
     $('#text-A').html(currentTest.a);
     $('#text-B').html(currentTest.b);
@@ -86,6 +96,8 @@ const activateTestView = (args) => {
     document.getElementById('test').classList.remove('out');
     return new Promise(resolve => setTimeout(function () { resolve(); }, 1000));
 }
+
+/*ACTION*/
 //Hides the test div and removes the test info from it
 const deactivateTestView = () => {
     document.getElementById('test').classList.add('out');
@@ -98,6 +110,8 @@ const deactivateTestView = () => {
         resolve();
     }, 1000));
 }
+
+/*ACTION*/
 //Attaches the click function to each test option and waits until one option is clicked
 const getTestAnswer = () => {
     let promise = new Promise((function (resolve, reject) { promiseResolve = resolve; promiseReject = reject; }));
@@ -109,37 +123,41 @@ const getTestAnswer = () => {
 
     return promise;
 }
-
-const answerClick = (id, initialTime, resolve) => {
+//Used in getTestAnswer()
+//Handler for the buttons in a Test. Checks response time since initialTime, gets which option is clicked and resolves de test promise.
+const answerClick = (id, initialTime, promiseResolve) => {
     let answerTime = new Date();
     document.getElementById('button-A').onclick = null;
     document.getElementById('button-B').onclick = null;
     document.getElementById('button-C').onclick = null;
     document.getElementById('button-D').onclick = null;
     id = id.replace("button-", '');
-    resolve();
+    promiseResolve();
     console.log('Answer: ' + id + ' Time: ' + (answerTime - initialTime) + 'ms');
 }
 
-
-
+/*ACTION*/
 //Displays the dialog in index args[1] of scene index args[0] 
 const showMessage = async (args) => {
-    let currentDialog = language.sceneArray[args[0]].dialog[args[1]];
+    let sceneNumber = args[0];
+    let dialogNumber = args[1];
+    let currentDialog = language.sceneArray[sceneNumber].dialog[dialogNumber];
     let fullText = currentDialog.message;
-    let currentOffset = 0;
+    let currentOffset = -1;
     let markUpArray = [];
     $('#message').html('<span id="visibleMessage"></span><span id="blankedMessage"></span>');
     $("#speaker").html(currentDialog.speaker + ' says:');
-    $("#dialog").click(function () { $("#message").html(fullText); });
+    document.getElementById('dialog').onclick = function () { $("#message").html(fullText);};
     do {
         await new Promise(resolve => setTimeout(resolve, 50));
         //this function can be implemented here to reduce the amount of functions in the script
         currentOffset = displayNextCharacter(currentOffset, fullText, markUpArray);
     } while (currentOffset < fullText.length)
+    document.getElementById('dialog').onclick = null;
     return new Promise(resolve => $("#canvas").click(resolve));
 }
-//Displays next character in fullText accounting for markUp <...> </...> symbols
+//Used in showMessage()
+//Displays next character in fullText accounting for markUp <...> </...> tags
 const displayNextCharacter = (currentOffset, fullText, markUpArray) => {
     currentOffset++;
     if ($("#message").html() == fullText) {//If the message is complete return complete text length
@@ -180,9 +198,8 @@ const displayNextCharacter = (currentOffset, fullText, markUpArray) => {
     return currentOffset;
 }
 
-var actions;
+var actions = new Map();;
 function initializeActions() {
-    actions = new Map();
     actions.set(toggleOut.name, toggleOut);
     actions.set(toggleCenter.name, toggleCenter);
     actions.set(showMessage.name, showMessage);
@@ -194,3 +211,4 @@ function initializeActions() {
     actions.set(deactivateTestView.name, deactivateTestView);
     actions.set(getTestAnswer.name, getTestAnswer);
 }
+initializeActions();

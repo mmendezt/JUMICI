@@ -5,42 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <!-- <link rel="stylesheet" href="debug.css"> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="scene_class.js"></script>
     <script src="actions.js"></script>
     <script src="main_controller.js"></script>
-    <!-- <script src="dev/scene_creation_buttons.js"></script> -->
-    <!-- <script src="dev/debug_buttons.js"></script> -->
     <title>JUMICI</title>
 </head>
 <body>
     <div id="canvas">
+
+        <!-- Dialog View -->
         <div id="background" state></div>
-        <div class="character out" id="left">
-        </div>
-
-        <div class="character out" id="right">
-        </div>
-
+        <div id="left" class="character out"></div>
+        <div id="right" class="character out"></div>
         <div id="dialog" class='out'>
             <div id="speaker"><span id="blankedMessage">Title</span></div>
             <div id="message"></div>
         </div>
 
+        <!-- Test View -->
         <div id="test" class='out'>
-            <div id="question">Really really really really long question question long enough to be considered suficiently long</div>
+            <div id="question"></div>
             <div id="answers">
-                <div id="button-A" class="test-button">A) <div class="small-text" id="text-A">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et mollitia impedit doloribus? Reprehenderit obcaecati iusto sapiente provident, ut doloribus magni laborum illo possimus officia perferendis sit? Expedita maxime est ducimus.</div></div>
-                <div id="button-B" class="test-button">B) <div class="small-text" id="text-B">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, natus cumque ut est ipsa vel itaque, laboriosam, repellat provident illum hic harum aspernatur quaerat ea mollitia. Dolorem temporibus vero nostrum!</div></div>
-                <div id="button-C" class="test-button">C) <div class="small-text" id="text-C">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae labore esse officiis voluptates quia laboriosam incidunt debitis rem quis voluptatem, quidem eos sapiente magnam quos itaque ipsum adipisci exercitationem nihil!</div></div>
-                <div id="button-D" class="test-button">D) <div class="small-text" id="text-D">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium facilis ea laboriosam quidem quos? Pariatur harum animi praesentium nisi expedita quia reprehenderit quis dolorem facilis. Rerum, quisquam. Omnis, quas ea!</div></div>
+                <div id="button-A" class="test-button">A) <div id="text-A" class="small-text"></div></div>
+                <div id="button-B" class="test-button">B) <div id="text-B" class="small-text"></div></div>
+                <div id="button-C" class="test-button">C) <div id="text-C" class="small-text"></div></div>
+                <div id="button-D" class="test-button">D) <div id="text-D" class="small-text"></div></div>
             </div>
         </div>
+        
     </div>
-
-
-
 </body>
 </html>
